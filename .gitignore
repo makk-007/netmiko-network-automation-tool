@@ -216,3 +216,15 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Sensitive files
+devices.yaml
+
+# Output directories
+outputs/
+backups/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
