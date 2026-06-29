@@ -1,7 +1,7 @@
-# Day 1 -Device Inventory and Connection Handler
+# Day 1 -- Device Inventory and Connection Handler
 
 **Date:** Monday, June 29, 2026
-**Phase:** 4 -Netmiko Network Automation Tool
+**Phase:** 4 -- Netmiko Network Automation Tool
 **Repository:** `netmiko-network-automation-tool`
 
 ---
