@@ -1,0 +1,2 @@
+/ip dns set servers=8.8.8.8,8.8.4.4
+/system ntp client set enabled=yes servers=pool.ntp.org
