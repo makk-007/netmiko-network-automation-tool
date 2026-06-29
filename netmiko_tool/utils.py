@@ -30,7 +30,6 @@ def load_devices(inventory_path: str = "devices.yaml") -> list[dict]:
     return data["devices"]
 
 
-
 def parse_output(command: str, raw_output: str, template_dir: str = "templates") -> list[dict] | None:
     """Parse raw command output using a TextFSM template.
 
