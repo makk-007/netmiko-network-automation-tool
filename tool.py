@@ -13,7 +13,7 @@ Usage:
 
 import argparse
 import sys
-from netmiko_tool import run_commands, push_config, backup_configs
+from netmiko_tool import run_commands, push_config, backup_configs, generate_report
 
 
 def handle_run(args):
@@ -53,6 +53,21 @@ def handle_backup(args):
     print("\n[*] Backup summary:")
     for device, path in results.items():
         print(f"    {device}: {path}")
+
+def handle_report(args):
+    """Handle the 'report' subcommand."""
+    print(f"[*] Running commands and generating HTML report...\n")
+    results = run_commands(
+        commands=args.commands,
+        inventory_path=args.inventory,
+        output_dir=args.output_dir,
+    )
+    path = generate_report(
+        results=results,
+        commands=args.commands,
+        output_dir=args.output_dir,
+    )
+    print(f"\n[*] Report ready: {path}")
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -121,6 +136,25 @@ examples:
         help="Directory to save backup files (default: backups)",
     )
     backup_parser.set_defaults(func=handle_backup)
+    
+    # report subcommand
+    report_parser = subparsers.add_parser(
+        "report",
+        help="Run commands and generate an HTML report",
+    )
+    report_parser.add_argument(
+        "--commands",
+        nargs="+",
+        required=True,
+        metavar="CMD",
+        help="One or more commands to run on each device",
+    )
+    report_parser.add_argument(
+        "--output-dir",
+        default="outputs",
+        help="Directory to save the report (default: outputs)",
+    )
+    report_parser.set_defaults(func=handle_report)
 
     return parser
 
