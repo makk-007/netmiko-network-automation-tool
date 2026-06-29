@@ -1,0 +1,10 @@
+Value INDEX (\d+)
+Value ADDRESS (\S+)
+Value NETWORK (\S+)
+Value INTERFACE (\S+)
+
+Start
+  ^Columns -> Continue
+  ^\s*${INDEX}\s+${ADDRESS}\s+${NETWORK}\s+${INTERFACE} -> Record
+
+EOF

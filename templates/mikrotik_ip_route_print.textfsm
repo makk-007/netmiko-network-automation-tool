@@ -1,0 +1,11 @@
+Value FLAGS (\S+)
+Value DST_ADDRESS (\S+)
+Value GATEWAY (\S+)
+Value ROUTING_TABLE (\S+)
+Value DISTANCE (\S+)
+
+Start
+  ^Columns -> Continue
+  ^\s*\d*\s+${FLAGS}\s+${DST_ADDRESS}\s+${GATEWAY}\s+${ROUTING_TABLE}\s+${DISTANCE} -> Record
+
+EOF
